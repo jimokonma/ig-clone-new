@@ -9,7 +9,7 @@ const PostHeader = ({ data }) => {
           source={{ uri: data.profile_picture }}
           style={styles.headerProfileImage}
         />
-        <Text style={styles.userame}>{data.user}</Text>
+        <Text style={styles.username}>{data.username}</Text>
       </View>
       <View>
         <Text style={{ color: "#fff", fontWeight: "900" }}>...</Text>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#ff8501",
   },
-  userame: {
+  username: {
     color: "#fff",
     margin: 5,
   },

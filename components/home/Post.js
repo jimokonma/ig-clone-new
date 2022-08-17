@@ -12,7 +12,7 @@ const Post = ({ postData }) => {
     <View style={{ marginBottom: 10 }}>
       <Divider width={1} orientation="vertical" />
       <PostHeader data={postData} />
-      <PostImage image={postData.imageUri} />
+      <PostImage image={postData.imageUrl} />
       <View style={{ marginHorizontal: 10 }}>
         <PostFooter />
         <Likes likes={postData.likes} />

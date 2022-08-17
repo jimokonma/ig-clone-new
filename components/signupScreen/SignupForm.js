@@ -12,7 +12,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import Validator from "email-validator";
 import { auth, db } from "../../Firebase";
-import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignupForm = () => {
@@ -37,18 +37,20 @@ const SignupForm = () => {
   };
   const onSignup = async (email, password, username) => {
     try {
+      // authenticatin: create new user
       const authUser = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
+      // New collection data to be created on signup
       const newData = {
         ownerId: authUser.user.uid,
         username: username,
         email: authUser.user.email,
         profile_picture: await getRandomProfilePicture(),
       };
-
+      // create new collection with specified id as email address
       const userData = await setDoc(
         doc(db, "users", authUser.user.email),
         newData
